@@ -1,5 +1,6 @@
 <?php
 require 'fetch_products.php';
+$counter = 1; 
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@ require 'fetch_products.php';
     <h2>Product List</h2>
     <table>
         <tr>
-            <th>ID</th>
+            <th>#</th> 
             <th>Name</th>
             <th>Price</th>
             <th>Description</th>
@@ -23,9 +24,9 @@ require 'fetch_products.php';
         </tr>
         <?php while ($row = $result->fetch_assoc()) { ?>
         <tr>
-            <td><?php echo $row['id']; ?></td>
+            <td><?php echo $counter; ?></td> 
             <td><?php echo $row['name']; ?></td>
-            <td>$<?php echo number_format($row['price'], 2); ?></td>
+            <td>₱ <?php echo number_format($row['price'], 2); ?></td>
             <td><?php echo $row['description']; ?></td>
             <td>
                 <a href="edit.php?id=<?php echo $row['id']; ?>"><button class="edit">Edit</button></a>
@@ -34,7 +35,7 @@ require 'fetch_products.php';
                 </a>
             </td>
         </tr>
-        <?php } ?>
+        <?php $counter++; } ?> 
     </table>
 
     <a href="index.php">Add New Product</a>
